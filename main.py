@@ -51,7 +51,10 @@ class CustomerData(BaseModel):
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    return HTMLResponse("<h1>HOME WORKING</h1>")
+    try:
+        return templates.TemplateResponse("home.html", {"request": request})
+    except Exception as e:
+        return HTMLResponse(f"<h1>ERROR:</h1><pre>{str(e)}</pre>")
 
 @app.get("/predict-page", response_class=HTMLResponse)
 def predict_page(request: Request):
