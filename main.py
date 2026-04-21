@@ -12,8 +12,8 @@ app = FastAPI()
 
 BASE_DIR = Path(__file__).resolve().parent
 
-model = joblib.load("xgboost_churn_model.pkl")
-feature_columns = joblib.load("feature_columns.pkl")
+model = joblib.load(BASE_DIR / "xgboost_churn_model.pkl")
+feature_columns = joblib.load(BASE_DIR / "feature_columns.pkl")
 
 app.add_middleware(
     CORSMiddleware,
@@ -57,6 +57,7 @@ def home(request: Request):
 @app.get("/predict-page", response_class=HTMLResponse)
 def predict_page(request: Request):
     return templates.TemplateResponse("predict.html", {"request": request})
+    # if your file is index.html, replace predict.html with index.html
 
 
 @app.get("/about", response_class=HTMLResponse)
