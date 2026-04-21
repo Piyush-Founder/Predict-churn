@@ -51,18 +51,15 @@ class CustomerData(BaseModel):
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    try:
-        return templates.TemplateResponse("home.html", {"request": request})
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"HOME ERROR: {str(e)}")
-
+    return HTMLResponse("<h1>HOME WORKING</h1>")
 
 @app.get("/predict-page", response_class=HTMLResponse)
 def predict_page(request: Request):
-    try:
-        return templates.TemplateResponse("predict.html", {"request": request})
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"PREDICT PAGE ERROR: {str(e)}")
+    return HTMLResponse("<h1>PREDICT PAGE WORKING</h1>")
+
+@app.get("/about", response_class=HTMLResponse)
+def about_page(request: Request):
+    return HTMLResponse("<h1>ABOUT PAGE WORKING</h1>")
 
 
 @app.get("/about", response_class=HTMLResponse)
