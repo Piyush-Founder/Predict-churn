@@ -12,8 +12,8 @@ app = FastAPI()
 
 BASE_DIR = Path(__file__).resolve().parent
 
-model = joblib.load(BASE_DIR / "xgboost_churn_model.pkl")
-feature_columns = joblib.load(BASE_DIR / "feature_columns.pkl")
+model = joblib.load("xgboost_churn_model.pkl")
+feature_columns = joblib.load("feature_columns.pkl")
 
 app.add_middleware(
     CORSMiddleware,
